@@ -1,4 +1,3 @@
-import { Box, Input, IconButton, HStack } from "@chakra-ui/react";
 import { LuSend } from "react-icons/lu";
 
 type ChatInputProps = {
@@ -15,9 +14,11 @@ export const ChatInput = ({
   isSending,
 }: ChatInputProps) => {
   return (
-    <Box p={2} borderTop="1px solid" borderColor="gray.200">
-      <HStack gap={2}>
-        <Input
+    <div className="p-2 border-t border-gray-200">
+      <div className="flex gap-2">
+        <input
+          type="text"
+          className="border rounded py-2 px-3 w-full focus:outline-none focus:ring focus:border-blue-300 disabled:opacity-50 disabled:cursor-not-allowed"
           placeholder="Type your message..."
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -29,15 +30,15 @@ export const ChatInput = ({
           }}
           disabled={isSending}
         />
-        <IconButton
+        <button
           aria-label="Send"
           onClick={onSend}
-          loading={isSending}
-          colorScheme="blue"
+          disabled={isSending}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-blue-300 disabled:cursor-not-allowed"
         >
           <LuSend />
-        </IconButton>
-      </HStack>
-    </Box>
+        </button>
+      </div>
+    </div>
   );
 };

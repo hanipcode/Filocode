@@ -1,4 +1,3 @@
-import { Box, VStack } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 type ChatContainerProps = {
@@ -7,17 +6,10 @@ type ChatContainerProps = {
 
 export const ChatContainer = ({ children }: ChatContainerProps) => {
   return (
-    <Box
-      h="100vh"
-      display="flex"
-      flexDirection="column"
-      flexGrow={1}
-      p={4}
-      bg="white"
-    >
-      <VStack flex="1" align="stretch" gap={0} overflow="hidden">
+    <div className="h-[100vh] flex flex-col flex-grow-1 p-4 bg-white">
+      <div className="flex-1 flex flex-col items-stretch gap-0 overflow-hidden">
         {children}
-      </VStack>
-    </Box>
+      </div>
+    </div>
   );
 };

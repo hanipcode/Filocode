@@ -1,4 +1,3 @@
-import { Box, VStack } from "@chakra-ui/react";
 import { ChatMessageProps, ChatMessage } from "./chat-message";
 
 type ChatWindowProps = {
@@ -7,12 +6,12 @@ type ChatWindowProps = {
 
 export const ChatWindow = ({ messages }: ChatWindowProps) => {
   return (
-    <Box flex="1" overflowY="auto" p={4} borderRadius="md" w="100%">
-      <VStack gap={3} align="stretch">
+    <div className="flex-1 overflow-y-auto p-4 rounded-md w-full">
+      <div className="flex flex-col gap-3 items-stretch">
         {messages.map((msg, idx) => (
           <ChatMessage key={idx} role={msg.role} content={msg.content} />
         ))}
-      </VStack>
-    </Box>
+      </div>
+    </div>
   );
 };

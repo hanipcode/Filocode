@@ -1,4 +1,3 @@
-import { Box, Text } from "@chakra-ui/react";
 import { useColorModeValue } from "./color-mode";
 
 export type ChatMessageProps = {
@@ -8,28 +7,26 @@ export type ChatMessageProps = {
 
 export const ChatMessage = ({ role, content }: ChatMessageProps) => {
   const isUser = role === "user";
-  const bg = useColorModeValue(
-    isUser ? "blue.100" : "gray.100",
-    isUser ? "blue.700" : "gray.700",
-  );
-  const color = isUser ? "black" : "gray.700";
-  const align = isUser ? "flex-end" : "flex-start";
+
+  const bgLightUser = "blue-100";
+  const bgDarkUser = "blue-700";
+  const bgLightAssistant = "gray-100";
+  const bgDarkAssistant = "gray-700";
+
+  const bgUser = useColorModeValue(bgLightUser, bgDarkUser);
+  const bgAssistant = useColorModeValue(bgLightAssistant, bgDarkAssistant);
+  const bg = isUser ? `bg-${bgUser}` : `bg-${bgAssistant}`;
+
+  const color = isUser ? "text-black" : "text-gray-700";
+  const align = isUser ? "justify-end" : "justify-start";
 
   return (
-    <Box display="flex" justifyContent={align} w="100%" px={2}>
-      <Box
-        bg={bg}
-        color={color}
-        px={4}
-        py={2}
-        borderRadius="md"
-        maxW="80%"
-        whiteSpace="pre-wrap"
+    <div className={`flex ${align} w-full px-2`}>
+      <div
+        className={`${bg} ${color} px-4 py-2 rounded-md max-w-[80%] whitespace-pre-wrap`}
       >
-        <Text fontSize="sm" fontFamily="mono">
-          {content}
-        </Text>
-      </Box>
-    </Box>
+        <p className="text-sm font-mono">{content}</p>
+      </div>
+    </div>
   );
 };

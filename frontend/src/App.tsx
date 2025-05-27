@@ -1,5 +1,3 @@
-import { Button, Flex, Heading, HStack, Text, VStack } from "@chakra-ui/react";
-import { ColorModeButton } from "./components/color-mode";
 import { Chat, GetContexts, SelectDirectory } from "../wailsjs/go/main/App";
 import { useQuery } from "@tanstack/react-query";
 import { FileTree } from "./components/filetree";
@@ -22,24 +20,26 @@ export const App = () => {
   const [isSending, setIsSending] = useState(false);
   const { data } = useContextQuery();
   return (
-    <Flex gap="4">
-      <VStack w="30dvw" h="dvh" borderRightWidth="1px" align="left">
-        <HStack borderBottomWidth="1px" p="4" justify="space-between">
-          <Heading>Context AI</Heading>
-          <ColorModeButton />
-        </HStack>
-        <VStack gap="3" py="3" pb="8" borderBottomWidth={1}>
-          <Text>Start Creating Project</Text>
-          <Button
+    <div className="flex gap-4">
+      <div className="flex flex-col w-[30dvw] h-[100dvh] border-r  border-gray-200 items-start">
+        <div className="flex border-b border-gray-200 p-4 justify-between w-full">
+          <h1 className="text-2xl font-semibold">Context AI</h1>
+        </div>
+        <div className="flex flex-col gap-3 py-3 pb-8 border-b border-gray-200 w-full px-8 text-center">
+          <p>Start Creating Project</p>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => {
               SelectDirectory("Select directory");
             }}
           >
             Add Folder
-          </Button>
-        </VStack>
-        <VStack align="start">{data && <FileTree nodes={data} />}</VStack>
-      </VStack>
+          </button>
+        </div>
+        <div className="flex flex-col items-start w-full">
+          {data && <FileTree nodes={data} />}
+        </div>
+      </div>
       <ChatContainer>
         <ChatWindow messages={messages} />
         <ChatInput
@@ -67,6 +67,6 @@ export const App = () => {
           }}
         />
       </ChatContainer>
-    </Flex>
+    </div>
   );
 };
