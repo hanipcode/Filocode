@@ -6,6 +6,7 @@ import { ChatInput } from "./components/chat-input";
 import { ChatWindow } from "./components/chat-window";
 import { useState } from "react";
 import { ChatMessageProps } from "./components/chat-message";
+import { Button } from "./components/ui/button";
 
 const useContextQuery = () => {
   return useQuery({
@@ -27,14 +28,13 @@ export const App = () => {
         </div>
         <div className="flex flex-col gap-3 py-3 pb-8 border-b border-gray-200 w-full px-8 text-center">
           <p>Start Creating Project</p>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          <Button
             onClick={() => {
               SelectDirectory("Select directory");
             }}
           >
             Add Folder
-          </button>
+          </Button>
         </div>
         <div className="flex flex-col items-start w-full">
           {data && <FileTree nodes={data} />}

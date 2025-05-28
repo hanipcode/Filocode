@@ -6,6 +6,7 @@ import (
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
+	"github.com/wailsapp/wails/v2/pkg/options/mac"
 )
 
 //go:embed all:frontend/dist
@@ -20,6 +21,9 @@ func main() {
 		Title:  "dnai",
 		Width:  1024,
 		Height: 768,
+		Mac: &mac.Options{
+			TitleBar: mac.TitleBarHidden(),
+		},
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},

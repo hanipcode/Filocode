@@ -1,4 +1,6 @@
 import { LuSend } from "react-icons/lu";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 type ChatInputProps = {
   value: string;
@@ -16,9 +18,8 @@ export const ChatInput = ({
   return (
     <div className="p-2 border-t border-gray-200">
       <div className="flex gap-2">
-        <input
+        <Input
           type="text"
-          className="border rounded py-2 px-3 w-full focus:outline-none focus:ring focus:border-blue-300 disabled:opacity-50 disabled:cursor-not-allowed"
           placeholder="Type your message..."
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -30,14 +31,9 @@ export const ChatInput = ({
           }}
           disabled={isSending}
         />
-        <button
-          aria-label="Send"
-          onClick={onSend}
-          disabled={isSending}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-blue-300 disabled:cursor-not-allowed"
-        >
+        <Button aria-label="Send" onClick={onSend} disabled={isSending}>
           <LuSend />
-        </button>
+        </Button>
       </div>
     </div>
   );

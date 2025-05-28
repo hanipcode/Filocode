@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/hanifmuhammad/Projects/dnai/logs/.1c587f57e60ac11d1f55796589c47daf4f4391c5-audit.json",
+    "files": [
+        {
+            "date": 1748408243261,
+            "name": "/Users/hanifmuhammad/Projects/dnai/logs/mcp-puppeteer-2025-05-28.log",
+            "hash": "abe3d4ffa3935c252df89316073996ffcfdeaeac5d68036f3bab2e67f078d42f"
+        }
+    ],
+    "hashType": "sha256"
+}
